@@ -77,7 +77,3 @@ def process_text(text : str, spacer = " "):
     lemmatized_txt = lemmatize(no_stop_txt)
     
     return spacer.join(lemmatized_txt)
-
-if __name__ == "__main__":
-    pstr = "Hello! \nMy name is Dan!"
-    print(process_text(pstr))
