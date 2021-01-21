@@ -1,1 +1,5 @@
 data
+file_paths.yml
+__pycache__
+.vscode
+sneaky_sneaky
