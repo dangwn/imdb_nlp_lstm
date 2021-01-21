@@ -7,7 +7,7 @@ from nlp_utils import tokenize, lemmatize
 r = requests.get('https://storage.googleapis.com/tensorflow/tf-keras-datasets/imdb_word_index.json')
 word_dict = json.loads(r.content)
 
-def vectorize_word(word:str, vector_size = 10_000) -> list:
+def vectorize_word(word:str, vector_size = 10_000):
     '''
     Returns a one-hot encoded vector of an input word
     If the word is not in the top <vector_size> most used, words, a zero vector is returned
