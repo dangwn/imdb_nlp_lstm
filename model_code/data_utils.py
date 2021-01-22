@@ -1,13 +1,21 @@
+'''
+Author: Dan Gawne
+Date: 2021-01-22
+'''
+
 import requests
 import json
 import numpy as np
 from nlp_utils import tokenize, lemmatize
 
+#--------------------------------------------------------------------------------------------------
+# Word Vectorization
+#--------------------------------------------------------------------------------------------------
 # Google's Dictionary of the top 88_000ish most common words
 r = requests.get('https://storage.googleapis.com/tensorflow/tf-keras-datasets/imdb_word_index.json')
 word_dict = json.loads(r.content)
 
-def vectorize_word(word:str, vector_size = 10_000):
+def word_vectorize(word:str, vector_size = 10_000):
     '''
     Returns a one-hot encoded vector of an input word
     If the word is not in the top <vector_size> most used, words, a zero vector is returned
@@ -30,7 +38,7 @@ def vectorize_word(word:str, vector_size = 10_000):
         vector[ind-1] = 1
     return np.array(vector)
 
-def vectorize_doc(doc:str, vector_size = 10_000, final_doc_len = 100):
+def word_vectorize_doc(doc:str, vector_size = 10_000, final_doc_len = 100):
     '''
     Returns an array of word vectors for a given document
     =============================================
@@ -56,6 +64,9 @@ def vectorize_doc(doc:str, vector_size = 10_000, final_doc_len = 100):
 
     return np.array(vectors)
 
-    
+#--------------------------------------------------------------------------------------------------
+# Character Vectorization
+#--------------------------------------------------------------------------------------------------
+
 
 

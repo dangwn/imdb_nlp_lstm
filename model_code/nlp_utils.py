@@ -1,3 +1,8 @@
+'''
+Author: Dan Gawne
+Date: 2021-01-22
+'''
+
 import nltk
 
 import re
