@@ -15,13 +15,13 @@ data_dir = file_paths['data_dir'][0]
 
 review_data = pd.read_csv(os.path.join(data_dir, 'reviews.csv'))
 
-def create_data(vector_size = 10_000, final_doc_len = 100):
+def create_data(final_doc_len = 200):
     features = []
     labels = []
 
     for i in range(len(review_data)):
-        features.append(data_utils.vectorize_doc(
-            review_data.loc[i,'review'], vector_size = vector_size, final_doc_len = final_doc_len
+        features.append(data_utils.char_vectorize_doc(
+            review_data.loc[i,'review'], final_doc_len = final_doc_len
         ))
         labels.append(review_data.loc[i,'sentiment'])
         
@@ -31,7 +31,7 @@ def create_data(vector_size = 10_000, final_doc_len = 100):
     return X, y
 
 if __name__ == '__main__':
-    X,y = create_data(vector_size=1_000, final_doc_len = 50)
-    print(X.shape, y.shape)
+    X,y = create_data(final_doc_len = 140)
+    print(X[0], y[0])
 
 
