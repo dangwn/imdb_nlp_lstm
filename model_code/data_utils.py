@@ -71,6 +71,17 @@ alphabet = 'abcdefghijklmnopqrstuvwxyz0123456789!"%^&*()_=-[]}{:;<>/?`\' '
 char_dict = {ch:ind for ind,ch in enumerate(list(set(alphabet[:])))}
 
 def char_vectorize(char : str):
+    '''
+    Returns a one-hot vector for a given character
+    =============================================
+    Inputs:
+      - char: A string containing the character to be vectorized
+    Returns:
+      - A numpy arry containing the one-hot vector
+    =============================================
+    Asserts:
+      - The character string must be of length one
+    '''
     assert len(char) == 1
 
     vector = [0] * len(char_dict)
@@ -80,7 +91,15 @@ def char_vectorize(char : str):
     return np.array(vector)
 
 def char_vectorize_doc(doc:str, final_doc_len = 200):
-
+    '''
+    Returns an array containing the vectorized characters
+    =============================================
+    Inputs:
+      - doc          : A string containing the document
+      - final_doc_len: The length of the output array of vectors
+    Returns:
+      - A numpy array containing the one-hot character vectors
+    '''
     all_chars = doc
     if len(doc) > final_doc_len:
         all_chars = doc[:final_doc_len]
